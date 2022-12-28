@@ -1,0 +1,45 @@
+# Django settings
+*.env
+*.sqlite3
+*.pyc
+
+# React build files
+build/
+
+# JetBrains IDE files
+.idea/
+
+# Other JetBrains files
+*.iml
+*.iws
+
+# Node modules
+node_modules/
+
+# Package lock files
+package-lock.json
+yarn.lock
+
+# Virtual environment files
+.venv/
+venv/
+
+# Python bytecode files
+__pycache__/
+*.py[co]
+
+# Ignore files created by npm
+.DS_Store
+
+# Ignore files created by yarn
+.pnp.js
+.pnp.cjs
+
+# Ignore files created by Django
+.cache
+__pycache__/
+*.log
+
+# Ignore files created by React
+*.cache
+

@@ -1,0 +1,81 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Predict API",
+    "version": "1.0.0",
+    "description": "This API provides a single endpoint for obtaining confidence values for given labels and an image using the Clip network from OpenAI.\n"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com"
+    }
+  ],
+  "paths": {
+    "/predict": {
+      "post": {
+        "summary": "Obtain confidence values for given labels and an image",
+        "description": "| This endpoint accepts a POST request with a `multipart/form-data` `Content-Type`. The request body should include an `image` parameter that is a base64-encoded image and a `labels` parameter that is an array of strings. The endpoint returns a response with a 200 status code and a payload that is an array of floating-point numbers representing the confidence values for the given labels.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "image",
+                  "labels"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Base64-encoded image"
+                  },
+                  "labels": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "image": "cat.png",
+                  "labels": [
+                    "cat",
+                    "dog",
+                    "car"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Confidence value for the corresponding labels"
+                  },
+                  "example": [
+                    0.95,
+                    0.04,
+                    0.01
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}

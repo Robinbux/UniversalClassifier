@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Your API
+  description: A description of your API
+  termsOfService: http://example.com/terms/
+  contact:
+    name: Your Name
+    url: http://example.com
+    email: your@email.com
+  license:
+    name: MIT
+    url: http://example.com/license
+host: example.com
+basePath: /api
+schemes:
+  - https
+paths:
+  /predict:
+    post:
+      summary: Predict endpoint
+      description: |
+        This endpoint accepts a POST request with a JSON payload containing a list of strings `labels`
+        and an image file `image`, and returns a list of floating numbers in the response.
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            required:
+              - labels
+              - image
+            properties:
+              labels:
+                type: array
+                items:
+                  type: string
+              image:
+                type: string
+                format: binary
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              type: number
+              format: float

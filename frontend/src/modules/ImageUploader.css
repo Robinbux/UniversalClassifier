@@ -1,0 +1,22 @@
+.image-uploader .image-container {
+    position: relative;
+}
+
+.image-uploader .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+}
+
+.image-uploader .delete-btn .fa-trash-alt {
+    font-size: 1.5em;
+}
+
+.image {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
